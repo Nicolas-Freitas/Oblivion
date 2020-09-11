@@ -10,13 +10,13 @@ namespace APIEmpreGO.Interfaces
     {
         //GET
         List<Empresa> listar();
-        Usuario listarEspecifico(long id);
+        Empresa listarEspecifico(long id);
 
         //POST
         void cadastrar(Empresa usuario);
 
         //DELETE
-        void deletar(Empresa usuario);
+        void deletar(long id);
 
         //PUT
         void atualizar(long id, Empresa usuario);

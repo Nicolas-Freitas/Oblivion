@@ -6,6 +6,8 @@ using APIEmpreGO.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using APIEmpreGO.Repositories;
+using System.Net;
 
 namespace APIEmpreGO.Controllers
 {
@@ -13,40 +15,43 @@ namespace APIEmpreGO.Controllers
     [Route("api/[controller]")]
     public class UsuarioController : ControllerBase
     {
-
+        UsuarioRepository usuarioRepository = new UsuarioRepository();
         //Listar todos os usuarios
         [HttpGet]
-        public string listarTodos()
+        public List<Usuario> listarTodos()
         {
-            return "Todos os usuarios";
+            return usuarioRepository.listar();
         }
 
         //Listar usuario especifico
         [HttpGet("{id}")]
-        public string listarEspecifico(long id)
+        public Usuario listarEspecifico(long id)
         {
-            return $"Usuario {id}";
+            return usuarioRepository.listarEspecifico(id);
         }
 
         //Colocar usuario especifico
         [HttpPost]
-        public string colocarNoBanco(Usuario usuario)
+        public HttpStatusCode colocarNoBanco(Usuario usuario)
         {
-            return $"Colocando Usuario";
+            usuarioRepository.cadastrar(usuario);
+            return HttpStatusCode.OK;
         }
 
         //Deletar usuario especifico
         [HttpDelete("{id}")]
-        public string deletar(long id)
+        public HttpStatusCode deletar(long id)
         {
-            return $"Deletando Usuario {id}";
+            usuarioRepository.deletar(id);
+            return HttpStatusCode.OK;
         }
 
         //Atualizar usuario especifico
         [HttpPut("{id}")]
-        public string atualizarNoBanco(long id, Usuario usuario)
+        public HttpStatusCode atualizarNoBanco(long id, Usuario usuario)
         {
-            return $"Atualizando Usuario {id}";
+            usuarioRepository.atualizar(id, usuario);
+            return HttpStatusCode.OK;
         }
     }
 }

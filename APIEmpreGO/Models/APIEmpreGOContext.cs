@@ -41,11 +41,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Administrador>(entity =>
             {
                 entity.HasKey(e => e.IdAdministrador)
-                    .HasName("PK__Administ__EBE80EA13965BD70");
+                    .HasName("PK__Administ__EBE80EA1F62314DD");
 
-                entity.Property(e => e.IdAdministrador)
-                    .HasColumnName("idAdministrador")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdAdministrador).HasColumnName("idAdministrador");
 
                 entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
 
@@ -58,11 +56,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Aluno>(entity =>
             {
                 entity.HasKey(e => e.IdAluno)
-                    .HasName("PK__Aluno__0C5BC849088C0EC7");
+                    .HasName("PK__Aluno__0C5BC84989FF5E1F");
 
-                entity.Property(e => e.IdAluno)
-                    .HasColumnName("idAluno")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdAluno).HasColumnName("idAluno");
 
                 entity.Property(e => e.Cpf)
                     .IsRequired()
@@ -97,11 +93,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<AlunoSkill>(entity =>
             {
                 entity.HasKey(e => e.IdAlunoSkill)
-                    .HasName("PK__AlunoSki__30C11B03AEA181CF");
+                    .HasName("PK__AlunoSki__30C11B0377915C9F");
 
-                entity.Property(e => e.IdAlunoSkill)
-                    .HasColumnName("idAlunoSkill")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdAlunoSkill).HasColumnName("idAlunoSkill");
 
                 entity.Property(e => e.IdAluno).HasColumnName("idAluno");
 
@@ -121,11 +115,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Empresa>(entity =>
             {
                 entity.HasKey(e => e.IdEmpresa)
-                    .HasName("PK__Empresa__75D2CED44D4B0C8A");
+                    .HasName("PK__Empresa__75D2CED40A34EF01");
 
-                entity.Property(e => e.IdEmpresa)
-                    .HasColumnName("idEmpresa")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdEmpresa).HasColumnName("idEmpresa");
 
                 entity.Property(e => e.Cep)
                     .HasColumnName("CEP")
@@ -160,11 +152,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<FuncionarioEmpresa>(entity =>
             {
                 entity.HasKey(e => e.IdFuncionarioEmpresa)
-                    .HasName("PK__Funciona__04E14878C1DD46B0");
+                    .HasName("PK__Funciona__04E1487846EA931C");
 
-                entity.Property(e => e.IdFuncionarioEmpresa)
-                    .HasColumnName("idFuncionarioEmpresa")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdFuncionarioEmpresa).HasColumnName("idFuncionarioEmpresa");
 
                 entity.Property(e => e.IdEmpresa).HasColumnName("idEmpresa");
 
@@ -184,11 +174,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Inscricao>(entity =>
             {
                 entity.HasKey(e => e.IdInscricao)
-                    .HasName("PK__Inscrica__CB2B18FE3258C9A8");
+                    .HasName("PK__Inscrica__CB2B18FEE73B0325");
 
-                entity.Property(e => e.IdInscricao)
-                    .HasColumnName("idInscricao")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdInscricao).HasColumnName("idInscricao");
 
                 entity.Property(e => e.Admicao).HasColumnName("admicao");
 
@@ -208,11 +196,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Skill>(entity =>
             {
                 entity.HasKey(e => e.IdSkill)
-                    .HasName("PK__Skill__C4CE4D6EBB3831DA");
+                    .HasName("PK__Skill__C4CE4D6EDB46F902");
 
-                entity.Property(e => e.IdSkill)
-                    .HasColumnName("idSkill")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdSkill).HasColumnName("idSkill");
 
                 entity.Property(e => e.IdAluno).HasColumnName("idAluno");
 
@@ -237,11 +223,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<TipoUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdTipoUsuario)
-                    .HasName("PK__TipoUsua__03006BFF15D3773E");
+                    .HasName("PK__TipoUsua__03006BFF6C91D2BE");
 
-                entity.Property(e => e.IdTipoUsuario)
-                    .HasColumnName("idTipoUsuario")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdTipoUsuario).HasColumnName("idTipoUsuario");
 
                 entity.Property(e => e.TituloTipoUsuario)
                     .HasColumnName("tituloTipoUsuario")
@@ -252,11 +236,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__645723A6DA568D3D");
+                    .HasName("PK__Usuario__645723A651989477");
 
-                entity.Property(e => e.IdUsuario)
-                    .HasColumnName("idUsuario")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
 
                 entity.Property(e => e.Email)
                     .HasColumnName("email")
@@ -286,11 +268,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Vaga>(entity =>
             {
                 entity.HasKey(e => e.IdVaga)
-                    .HasName("PK__Vaga__02E6F4AA756C5CDC");
+                    .HasName("PK__Vaga__02E6F4AA3DA3F6CB");
 
-                entity.Property(e => e.IdVaga)
-                    .HasColumnName("idVaga")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdVaga).HasColumnName("idVaga");
 
                 entity.Property(e => e.CandidatosVaga).HasColumnName("candidatosVaga");
 
@@ -326,11 +306,9 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<VagaSkill>(entity =>
             {
                 entity.HasKey(e => e.IdVagaSkill)
-                    .HasName("PK__VagaSkil__4CB79F8EF24E5E98");
+                    .HasName("PK__VagaSkil__4CB79F8E13289AEC");
 
-                entity.Property(e => e.IdVagaSkill)
-                    .HasColumnName("idVagaSkill")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdVagaSkill).HasColumnName("idVagaSkill");
 
                 entity.Property(e => e.IdSkill).HasColumnName("idSkill");
 

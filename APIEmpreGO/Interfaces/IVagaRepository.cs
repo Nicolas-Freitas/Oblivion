@@ -6,20 +6,20 @@ using APIEmpreGO.Models;
 
 namespace APIEmpreGO.Interfaces
 {
-    interface IUsuarioRepository
+    interface IVagaRepository
     {
         //GET
-        List<Usuario> listar();
-        Usuario listarEspecifico(long id);
+        List<Vaga> listar();
+        Vaga listarEspecifico(long id);
 
         //POST
-        void cadastrar(Usuario usuario);
+        void cadastrar(Vaga vaga);
 
         //DELETE
-        void deletar(Usuario usuario);
+        void deletar(long id);
 
         //PUT
-        void atualizar(long id, Usuario usuario);
+        void atualizar(long id, Vaga vaga);
 
     }
 }

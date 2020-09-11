@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using APIEmpreGO.Models;
+using APIEmpreGO.Repositories;
+using System.Net;
 
 namespace APIEmpreGO.Controllers
 {
@@ -13,40 +15,44 @@ namespace APIEmpreGO.Controllers
     [Route("api/[controller]")]
     public class EmpresaController : ControllerBase
     {
+        EmpresaRepository empresaRepository = new EmpresaRepository();
 
         //Listar todos os Empresas
         [HttpGet]
-        public string listarTodos()
+        public List<Empresa> listarTodos()
         {
-            return "Todas as Empresas";
+            return empresaRepository.listar();
         }
 
         //Listar Empresa especifica
         [HttpGet("{id}")]
-        public string listarEspecifico(long id)
+        public Empresa listarEspecifico(long id)
         {
-            return $"Empresa {id}";
+            return empresaRepository.listarEspecifico(id);
         }
 
         //Colocar Empresa especifica
         [HttpPost]
-        public string colocarNoBanco(Empresa empresa)
+        public HttpStatusCode colocarNoBanco(Empresa empresa)
         {
-            return $"Colocando Empresa";
+            empresaRepository.cadastrar(empresa);
+            return HttpStatusCode.OK;
         }
 
         //Deletar Empresa especifica
         [HttpDelete("{id}")]
-        public string deletar(long id)
+        public HttpStatusCode deletar(long id)
         {
-            return $"Deletando Empresa {id}";
+            empresaRepository.deletar(id);
+            return HttpStatusCode.OK;
         }
 
         //Atualizar Empresa especifica
         [HttpPut("{id}")]
-        public string atualizarNoBanco(long id, Empresa empresa)
+        public HttpStatusCode atualizarNoBanco(long id, Empresa empresa)
         {
-            return $"Atualizando Empresa {id}";
+            empresaRepository.atualizar(id, empresa);
+            return HttpStatusCode.OK;
         }
     }
 }

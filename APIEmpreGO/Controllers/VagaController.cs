@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using APIEmpreGO.Models;
+using APIEmpreGO.Repositories;
+using System.Net;
 
 namespace APIEmpreGO.Controllers
 {
@@ -14,39 +16,44 @@ namespace APIEmpreGO.Controllers
     public class VagaController : ControllerBase
     {
 
+        VagaRepository vagaRepository = new VagaRepository();
+
         //Listar todas as vaga
         [HttpGet]
-        public string listarTodos()
+        public List<Vaga> listarTodos()
         {
-            return "Todas as Vagas";
+            return vagaRepository.listar();
         }
 
         //Listar vaga especifica
         [HttpGet("{id}")]
-        public string listarEspecifico(long id)
+        public Vaga listarEspecifico(long id)
         {
-            return $"Vaga {id}";
+            return vagaRepository.listarEspecifico(id);
         }
 
         //Colocar vaga especifica
         [HttpPost]
-        public string colocarNoBanco(Vaga vaga)
+        public HttpStatusCode colocarNoBanco(Vaga vaga)
         {
-            return $"Colocando Vaga";
+            vagaRepository.cadastrar(vaga);
+            return HttpStatusCode.OK;
         }
 
         //Deletar vaga especifica
         [HttpDelete("{id}")]
-        public string deletar(long id)
+        public HttpStatusCode deletar(long id)
         {
-            return $"Deletando Vaga {id}";
+            vagaRepository.deletar(id);
+            return HttpStatusCode.OK;
         }
 
         //Atualizar vaga especifica
         [HttpPut("{id}")]
-        public string atualizarNoBanco(long id, Vaga vaga)
+        public HttpStatusCode atualizarNoBanco(long id, Vaga vaga)
         {
-            return $"Atualizando Empresa {id}";
+            vagaRepository.atualizar(id, vaga);
+            return HttpStatusCode.OK;
         }
     }
 }
