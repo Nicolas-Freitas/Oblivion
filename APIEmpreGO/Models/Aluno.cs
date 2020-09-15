@@ -17,7 +17,7 @@ namespace APIEmpreGO.Models
         public string NumeroMatricula { get; set; }
         public string Curso { get; set; }
         public string Cpf { get; set; }
-        public DateTime? DataNascimento { get; set; }
+        public DateTime DataNascimento { get; set; }
         public byte[] Curriculo { get; set; }
 
         public virtual Usuario IdUsuarioNavigation { get; set; }

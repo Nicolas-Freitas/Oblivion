@@ -41,194 +41,181 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Administrador>(entity =>
             {
                 entity.HasKey(e => e.IdAdministrador)
-                    .HasName("PK__Administ__EBE80EA1F62314DD");
-
-                entity.Property(e => e.IdAdministrador).HasColumnName("idAdministrador");
-
-                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+                    .HasName("PK__Administ__2B3E34A8850E9E38");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Administrador)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Administr__idUsu__44FF419A");
+                    .HasConstraintName("FK__Administr__IdUsu__4BAC3F29");
             });
 
             modelBuilder.Entity<Aluno>(entity =>
             {
                 entity.HasKey(e => e.IdAluno)
-                    .HasName("PK__Aluno__0C5BC84989FF5E1F");
+                    .HasName("PK__Aluno__8092FCB3A2A800C1");
 
-                entity.Property(e => e.IdAluno).HasColumnName("idAluno");
+                entity.HasIndex(e => e.Cpf)
+                    .HasName("UQ__Aluno__C1F89731061A261E")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.NumeroMatricula)
+                    .HasName("UQ__Aluno__8B9D7E45FC6C8A3B")
+                    .IsUnique();
 
                 entity.Property(e => e.Cpf)
                     .IsRequired()
                     .HasColumnName("CPF")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Curriculo).HasColumnName("curriculo");
+                    .HasMaxLength(11)
+                    .IsUnicode(false)
+                    .IsFixedLength();
 
                 entity.Property(e => e.Curso)
-                    .HasColumnName("curso")
+                    .IsRequired()
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
-                entity.Property(e => e.DataNascimento)
-                    .HasColumnName("dataNascimento")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+                entity.Property(e => e.DataNascimento).HasColumnType("date");
 
                 entity.Property(e => e.NumeroMatricula)
-                    .HasColumnName("numeroMatricula")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .IsRequired()
+                    .HasMaxLength(10)
+                    .IsUnicode(false)
+                    .IsFixedLength();
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Aluno)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Aluno__idUsuario__29572725");
+                    .HasConstraintName("FK__Aluno__IdUsuario__2C3393D0");
             });
 
             modelBuilder.Entity<AlunoSkill>(entity =>
             {
                 entity.HasKey(e => e.IdAlunoSkill)
-                    .HasName("PK__AlunoSki__30C11B0377915C9F");
-
-                entity.Property(e => e.IdAlunoSkill).HasColumnName("idAlunoSkill");
-
-                entity.Property(e => e.IdAluno).HasColumnName("idAluno");
-
-                entity.Property(e => e.IdSkill).HasColumnName("idSkill");
+                    .HasName("PK__AlunoSki__1DAB0D6BB29457B2");
 
                 entity.HasOne(d => d.IdAlunoNavigation)
                     .WithMany(p => p.AlunoSkill)
                     .HasForeignKey(d => d.IdAluno)
-                    .HasConstraintName("FK__AlunoSkil__idAlu__3E52440B");
+                    .HasConstraintName("FK__AlunoSkil__IdAlu__440B1D61");
 
                 entity.HasOne(d => d.IdSkillNavigation)
                     .WithMany(p => p.AlunoSkill)
                     .HasForeignKey(d => d.IdSkill)
-                    .HasConstraintName("FK__AlunoSkil__idSki__3F466844");
+                    .HasConstraintName("FK__AlunoSkil__IdSki__44FF419A");
             });
 
             modelBuilder.Entity<Empresa>(entity =>
             {
                 entity.HasKey(e => e.IdEmpresa)
-                    .HasName("PK__Empresa__75D2CED40A34EF01");
+                    .HasName("PK__Empresa__5EF4033E3777EA95");
 
-                entity.Property(e => e.IdEmpresa).HasColumnName("idEmpresa");
+                entity.HasIndex(e => e.Cep)
+                    .HasName("UQ__Empresa__C1FF39CFED021829")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Cnpj)
+                    .HasName("UQ__Empresa__AA57D6B4571A747F")
+                    .IsUnique();
+
+                entity.HasIndex(e => e.Contato)
+                    .HasName("UQ__Empresa__F7C1CC9726128FDB")
+                    .IsUnique();
 
                 entity.Property(e => e.Cep)
+                    .IsRequired()
                     .HasColumnName("CEP")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .HasMaxLength(8)
+                    .IsUnicode(false)
+                    .IsFixedLength();
 
                 entity.Property(e => e.Cnpj)
+                    .IsRequired()
                     .HasColumnName("CNPJ")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .HasMaxLength(14)
+                    .IsUnicode(false)
+                    .IsFixedLength();
 
                 entity.Property(e => e.Contato)
-                    .HasColumnName("contato")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .IsRequired()
+                    .HasMaxLength(11)
+                    .IsUnicode(false)
+                    .IsFixedLength();
 
                 entity.Property(e => e.Descricao)
-                    .HasColumnName("descricao")
-                    .HasMaxLength(200)
+                    .IsRequired()
+                    .HasMaxLength(500)
                     .IsUnicode(false);
 
-                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
-
-                entity.Property(e => e.Logo).HasColumnName("logo");
+                entity.Property(e => e.Logo).IsRequired();
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.Empresa)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Empresa__idUsuar__2C3393D0");
+                    .HasConstraintName("FK__Empresa__IdUsuar__31EC6D26");
             });
 
             modelBuilder.Entity<FuncionarioEmpresa>(entity =>
             {
                 entity.HasKey(e => e.IdFuncionarioEmpresa)
-                    .HasName("PK__Funciona__04E1487846EA931C");
-
-                entity.Property(e => e.IdFuncionarioEmpresa).HasColumnName("idFuncionarioEmpresa");
-
-                entity.Property(e => e.IdEmpresa).HasColumnName("idEmpresa");
-
-                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+                    .HasName("PK__Funciona__375FA311A645790B");
 
                 entity.HasOne(d => d.IdEmpresaNavigation)
                     .WithMany(p => p.FuncionarioEmpresa)
                     .HasForeignKey(d => d.IdEmpresa)
-                    .HasConstraintName("FK__Funcionar__idEmp__2F10007B");
+                    .HasConstraintName("FK__Funcionar__IdEmp__34C8D9D1");
 
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.FuncionarioEmpresa)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__Funcionar__idUsu__300424B4");
+                    .HasConstraintName("FK__Funcionar__IdUsu__35BCFE0A");
             });
 
             modelBuilder.Entity<Inscricao>(entity =>
             {
                 entity.HasKey(e => e.IdInscricao)
-                    .HasName("PK__Inscrica__CB2B18FEE73B0325");
+                    .HasName("PK__Inscrica__6209444B06F614F5");
 
-                entity.Property(e => e.IdInscricao).HasColumnName("idInscricao");
-
-                entity.Property(e => e.Admicao).HasColumnName("admicao");
+                entity.Property(e => e.Admicao).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.Descricao)
-                    .HasColumnName("descricao")
+                    .IsRequired()
                     .HasMaxLength(500)
                     .IsUnicode(false);
-
-                entity.Property(e => e.IdAluno).HasColumnName("idAluno");
 
                 entity.HasOne(d => d.IdAlunoNavigation)
                     .WithMany(p => p.Inscricao)
                     .HasForeignKey(d => d.IdAluno)
-                    .HasConstraintName("FK__Inscricao__idAlu__4222D4EF");
+                    .HasConstraintName("FK__Inscricao__IdAlu__47DBAE45");
             });
 
             modelBuilder.Entity<Skill>(entity =>
             {
                 entity.HasKey(e => e.IdSkill)
-                    .HasName("PK__Skill__C4CE4D6EDB46F902");
-
-                entity.Property(e => e.IdSkill).HasColumnName("idSkill");
-
-                entity.Property(e => e.IdAluno).HasColumnName("idAluno");
-
-                entity.Property(e => e.IdVaga).HasColumnName("idVaga");
+                    .HasName("PK__Skill__A0069307D5DDBEDE");
 
                 entity.Property(e => e.NomeSkill)
-                    .HasColumnName("nomeSkill")
+                    .IsRequired()
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdAlunoNavigation)
                     .WithMany(p => p.Skill)
                     .HasForeignKey(d => d.IdAluno)
-                    .HasConstraintName("FK__Skill__idAluno__37A5467C");
+                    .HasConstraintName("FK__Skill__IdAluno__3D5E1FD2");
 
                 entity.HasOne(d => d.IdVagaNavigation)
                     .WithMany(p => p.Skill)
                     .HasForeignKey(d => d.IdVaga)
-                    .HasConstraintName("FK__Skill__idVaga__36B12243");
+                    .HasConstraintName("FK__Skill__IdVaga__3C69FB99");
             });
 
             modelBuilder.Entity<TipoUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdTipoUsuario)
-                    .HasName("PK__TipoUsua__03006BFF6C91D2BE");
-
-                entity.Property(e => e.IdTipoUsuario).HasColumnName("idTipoUsuario");
+                    .HasName("PK__TipoUsua__CA04062BB7D84084");
 
                 entity.Property(e => e.TituloTipoUsuario)
-                    .HasColumnName("tituloTipoUsuario")
+                    .IsRequired()
                     .HasMaxLength(200)
                     .IsUnicode(false);
             });
@@ -236,93 +223,75 @@ namespace APIEmpreGO.Models
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuario__645723A651989477");
+                    .HasName("PK__Usuario__5B65BF971D3B5A78");
 
-                entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
+                entity.HasIndex(e => e.Email)
+                    .HasName("UQ__Usuario__A9D10534F1145854")
+                    .IsUnique();
 
                 entity.Property(e => e.Email)
-                    .HasColumnName("email")
+                    .IsRequired()
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
-                entity.Property(e => e.IdTipoUsuario).HasColumnName("idTipoUsuario");
-
                 entity.Property(e => e.NomeUsuario)
                     .IsRequired()
-                    .HasColumnName("nomeUsuario")
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.SenhaUsuario)
                     .IsRequired()
-                    .HasColumnName("senhaUsuario")
-                    .HasMaxLength(200)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.Usuario)
                     .HasForeignKey(d => d.IdTipoUsuario)
-                    .HasConstraintName("FK__Usuario__idTipoU__267ABA7A");
+                    .HasConstraintName("FK__Usuario__IdTipoU__276EDEB3");
             });
 
             modelBuilder.Entity<Vaga>(entity =>
             {
                 entity.HasKey(e => e.IdVaga)
-                    .HasName("PK__Vaga__02E6F4AA3DA3F6CB");
-
-                entity.Property(e => e.IdVaga).HasColumnName("idVaga");
-
-                entity.Property(e => e.CandidatosVaga).HasColumnName("candidatosVaga");
+                    .HasName("PK__Vaga__A848DC3E3F0CB0CC");
 
                 entity.Property(e => e.DescricaoVaga)
-                    .HasColumnName("descricaoVaga")
+                    .IsRequired()
                     .HasMaxLength(500)
                     .IsUnicode(false);
 
-                entity.Property(e => e.DisponibilidadeVaga)
-                    .HasColumnName("disponibilidadeVaga")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.IdEmpresa).HasColumnName("idEmpresa");
-
-                entity.Property(e => e.IdFuncionarioEmpresa).HasColumnName("idFuncionarioEmpresa");
+                entity.Property(e => e.DisponibilidadeVaga).HasColumnType("date");
 
                 entity.Property(e => e.NomeVaga)
-                    .HasColumnName("nomeVaga")
+                    .IsRequired()
                     .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdEmpresaNavigation)
                     .WithMany(p => p.Vaga)
                     .HasForeignKey(d => d.IdEmpresa)
-                    .HasConstraintName("FK__Vaga__idEmpresa__32E0915F");
+                    .HasConstraintName("FK__Vaga__IdEmpresa__38996AB5");
 
                 entity.HasOne(d => d.IdFuncionarioEmpresaNavigation)
                     .WithMany(p => p.Vaga)
                     .HasForeignKey(d => d.IdFuncionarioEmpresa)
-                    .HasConstraintName("FK__Vaga__idFunciona__33D4B598");
+                    .HasConstraintName("FK__Vaga__IdFunciona__398D8EEE");
             });
 
             modelBuilder.Entity<VagaSkill>(entity =>
             {
                 entity.HasKey(e => e.IdVagaSkill)
-                    .HasName("PK__VagaSkil__4CB79F8E13289AEC");
-
-                entity.Property(e => e.IdVagaSkill).HasColumnName("idVagaSkill");
-
-                entity.Property(e => e.IdSkill).HasColumnName("idSkill");
-
-                entity.Property(e => e.IdVaga).HasColumnName("idVaga");
+                    .HasName("PK__VagaSkil__0F10719687486996");
 
                 entity.HasOne(d => d.IdSkillNavigation)
                     .WithMany(p => p.VagaSkill)
                     .HasForeignKey(d => d.IdSkill)
-                    .HasConstraintName("FK__VagaSkill__idSki__3B75D760");
+                    .HasConstraintName("FK__VagaSkill__IdSki__412EB0B6");
 
                 entity.HasOne(d => d.IdVagaNavigation)
                     .WithMany(p => p.VagaSkill)
                     .HasForeignKey(d => d.IdVaga)
-                    .HasConstraintName("FK__VagaSkill__idVag__3A81B327");
+                    .HasConstraintName("FK__VagaSkill__IdVag__403A8C7D");
             });
 
             OnModelCreatingPartial(modelBuilder);

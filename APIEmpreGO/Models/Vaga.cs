@@ -16,7 +16,7 @@ namespace APIEmpreGO.Models
         public int? IdFuncionarioEmpresa { get; set; }
         public string NomeVaga { get; set; }
         public string DescricaoVaga { get; set; }
-        public DateTime? DisponibilidadeVaga { get; set; }
+        public DateTime DisponibilidadeVaga { get; set; }
         public int? CandidatosVaga { get; set; }
 
         public virtual Empresa IdEmpresaNavigation { get; set; }
