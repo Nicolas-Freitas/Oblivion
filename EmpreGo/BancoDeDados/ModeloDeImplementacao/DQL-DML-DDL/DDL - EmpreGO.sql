@@ -1,98 +1,98 @@
-CREATE DATABASE EmpreGO;
+CREATE DATABASE Emprego;
 Go
 
-USE EmpreGO;
+USE Emprego;
 GO 
 
 CREATE TABLE TipoUsuario(
-		idTipoUsuario INT PRIMARY KEY,
-		tituloTipoUsuario VARCHAR(200)
+		IdTipoUsuario INT PRIMARY KEY IDENTITY,
+		TituloTipoUsuario VARCHAR(200) NOT NULL
 );
 GO
 
 CREATE TABLE Usuario(
-		idUsuario INT PRIMARY KEY,
-		idTipoUsuario INT FOREIGN KEY REFERENCES TipoUsuario(idTipoUsuario),
-		nomeUsuario VARCHAR(200) NOT NULL,
-		senhaUsuario VARCHAR(200) NOT NULL,
-		email VARCHAR(200)
+		IdUsuario INT PRIMARY KEY IDENTITY,
+		IdTipoUsuario INT FOREIGN KEY REFERENCES TipoUsuario(IdTipoUsuario),
+		NomeUsuario VARCHAR(200) NOT NULL,
+		SenhaUsuario VARCHAR(255) NOT NULL,
+		Email VARCHAR(200) NOT NULL UNIQUE
 );
 GO
 
 CREATE TABLE Aluno(
-		idAluno INT PRIMARY KEY,
-		idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario),
-		numeroMatricula VARCHAR(200),
-		curso VARCHAR(200),
-		CPF VARCHAR(200) NOT NULL,
-		dataNascimento DATE,
-		curriculo VARBINARY(MAX)
+		IdAluno INT PRIMARY KEY IDENTITY,
+		IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario),
+		NumeroMatricula CHAR(10) NOT NULL UNIQUE,
+		Curso VARCHAR(200) NOT NULL,
+		CPF CHAR(11) NOT NULL UNIQUE,
+		DataNascimento DATE NOT NULL,
+		Curriculo VARBINARY(MAX)
 );
 GO
 
 CREATE TABLE Empresa(
-		idEmpresa INT PRIMARY KEY,
-		idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario),
-		CNPJ  VARCHAR(200),
-		CEP VARCHAR(200),
-		contato VARCHAR(200),
-		descricao VARCHAR(200),
-		logo VARBINARY(MAX)
+		IdEmpresa INT PRIMARY KEY IDENTITY,
+		IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario),
+		CNPJ CHAR(14) NOT NULL UNIQUE,
+		CEP CHAR(8) NOT NULL UNIQUE,
+		Contato CHAR(11) NOT NULL UNIQUE,
+		Descricao VARCHAR(500) NOT NULL,
+		Logo VARBINARY(MAX) NOT NULL
 );
 GO
 
 CREATE TABLE FuncionarioEmpresa(
-		idFuncionarioEmpresa INT PRIMARY KEY,
-		idEmpresa INT FOREIGN KEY REFERENCES Empresa(idEmpresa),
-		idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario),
-		NumeroFuncionario INT
+		IdFuncionarioEmpresa INT PRIMARY KEY IDENTITY,
+		IdEmpresa INT FOREIGN KEY REFERENCES Empresa(IdEmpresa),
+		IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario),
+		NumeroFuncionario INT 
 );
 GO
 
 CREATE TABLE Vaga(
-		idVaga INT PRIMARY KEY,
-		idEmpresa INT FOREIGN KEY REFERENCES Empresa(idEmpresa),
-		idFuncionarioEmpresa INT FOREIGN KEY REFERENCES FuncionarioEmpresa(idFuncionarioEmpresa),
-		nomeVaga VARCHAR(200),
-		descricaoVaga VARCHAR(500),
-		disponibilidadeVaga DATE,
-		candidatosVaga INT
+		IdVaga INT PRIMARY KEY IDENTITY,
+		IdEmpresa INT FOREIGN KEY REFERENCES Empresa(IdEmpresa),
+		IdFuncionarioEmpresa INT FOREIGN KEY REFERENCES FuncionarioEmpresa(IdFuncionarioEmpresa),
+		NomeVaga VARCHAR(200) NOT NULL,
+		DescricaoVaga VARCHAR(500) NOT NULL,
+		DisponibilidadeVaga DATE NOT NULL,
+		CandidatosVaga INT
 );
 GO
 
 CREATE TABLE Skill(
-		idSkill INT PRIMARY KEY,
-		idVaga INT FOREIGN KEY REFERENCES Vaga(idVaga),
-		idAluno INT FOREIGN KEY REFERENCES Aluno(idAluno),
-		nomeSkill VARCHAR(200)
+		IdSkill INT PRIMARY KEY IDENTITY,
+		IdVaga INT FOREIGN KEY REFERENCES Vaga(IdVaga),
+		IdAluno INT FOREIGN KEY REFERENCES Aluno(IdAluno),
+		NomeSkill VARCHAR(200) NOT NULL
 );
 GO
 
 CREATE TABLE VagaSkill(
-		idVagaSkill INT PRIMARY KEY,
-		idVaga INT FOREIGN KEY REFERENCES Vaga(idVaga),
-		idSkill INT FOREIGN KEY REFERENCES Skill(idSkill)
+		IdVagaSkill INT PRIMARY KEY IDENTITY,
+		IdVaga INT FOREIGN KEY REFERENCES Vaga(IdVaga),
+		IdSkill INT FOREIGN KEY REFERENCES Skill(IdSkill)
 );
 GO
 
 CREATE TABLE AlunoSkill(
-		idAlunoSkill INT PRIMARY KEY,
-		idAluno INT FOREIGN KEY REFERENCES Aluno(idAluno),
-		idSkill INT FOREIGN KEY REFERENCES Skill(idSkill)
+		IdAlunoSkill INT PRIMARY KEY IDENTITY,
+		IdAluno INT FOREIGN KEY REFERENCES Aluno(IdAluno),
+		IdSkill INT FOREIGN KEY REFERENCES Skill(IdSkill)
 );
 GO
 
 CREATE TABLE Inscricao(
-		idInscricao INT PRIMARY KEY,
-		idAluno INT FOREIGN KEY REFERENCES Aluno(idAluno),
-		admicao BIT,
-		descricao VARCHAR(500)
+		IdInscricao INT PRIMARY KEY IDENTITY,
+		IdAluno INT FOREIGN KEY REFERENCES Aluno(IdAluno),
+		Admicao BIT DEFAULT (0),
+		Descricao VARCHAR(500) NOT NULL
 );
 GO
 
 CREATE TABLE Administrador(
-	idAdministrador INT PRIMARY KEY,
-	idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuario)
+	IdAdministrador INT PRIMARY KEY IDENTITY,
+	IdUsuario INT FOREIGN KEY REFERENCES Usuario(IdUsuario)
 ); 
 GO
 
