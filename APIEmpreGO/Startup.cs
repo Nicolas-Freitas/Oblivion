@@ -43,25 +43,25 @@ namespace APIEmpreGO
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        // Quem est· solicitando
+                        // Quem est√° solicitando
                         ValidateIssuer = true,
 
-                        // Quem est· validando
+                        // Quem est√° validando
                         ValidateAudience = true,
 
-                        // Definindo o tempo de expiraÁ„o
+                        // Definindo o tempo de expira√ß√£o
                         ValidateLifetime = true,
 
                         // Forma de criptografia
-                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("inLock-chave-autenticacao")),
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("emprego-chave-autenticacao")),
 
-                        // Tempo de expiraÁ„o do token
+                        // Tempo de expira√ß√£o do token
                         ClockSkew = TimeSpan.FromMinutes(30),
 
-                        // Nome da issuer, de onde est· vindo
+                        // Nome da issuer, de onde est√° vindo
                         ValidIssuer = "Emprego.WebApi",
 
-                        // Nome da audience, de onde est· vindo
+                        // Nome da audience, de onde est√° vindo
                         ValidAudience = "Emprego.WebApi"
                     };
                 });
