@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using APIEmpreGO.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using APIEmpreGO.Repositories;
 using System.Net;
+using System.Linq;
+using APIEmpreGO.Models;
+using System.Threading.Tasks;
+using APIEmpreGO.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APIEmpreGO.Controllers
 {
@@ -24,6 +25,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Listar usuario especifico
+
         [HttpGet("{id}")]
         public Usuario listarEspecifico(long id)
         {
@@ -39,6 +41,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Deletar usuario especifico
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public HttpStatusCode deletar(long id)
         {
@@ -47,6 +50,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Atualizar usuario especifico
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public HttpStatusCode atualizarNoBanco(long id, Usuario usuario)
         {

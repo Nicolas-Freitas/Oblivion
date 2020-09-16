@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using APIEmpreGO.Models;
 using APIEmpreGO.Repositories;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APIEmpreGO.Controllers
 {
@@ -15,6 +16,8 @@ namespace APIEmpreGO.Controllers
     [Route("api/[controller]")]
     public class EmpresaController : ControllerBase
     {
+
+
         EmpresaRepository empresaRepository = new EmpresaRepository();
 
         //Listar todos os Empresas
@@ -32,6 +35,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Colocar Empresa especifica
+        [Authorize(Roles = "1")]
         [HttpPost]
         public HttpStatusCode colocarNoBanco(Empresa empresa)
         {
@@ -40,6 +44,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Deletar Empresa especifica
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public HttpStatusCode deletar(long id)
         {

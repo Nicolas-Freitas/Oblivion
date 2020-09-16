@@ -7,6 +7,7 @@ using APIEmpreGO.Repositories;
 using APIEmpreGO.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using APIEmpreGO.Functions;
 
 namespace APIEmpreGO.Controllers
 {
@@ -20,7 +21,7 @@ namespace APIEmpreGO.Controllers
     public class LoginController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
-
+        Utils util = new Utils();
 
         public LoginController()
         {
@@ -41,7 +42,7 @@ namespace APIEmpreGO.Controllers
             try
             {
                 // Busca o usuário pelo e-mail e senha
-                Usuario usuarioBuscado = _usuarioRepository.Login(login.Email, login.Senha);
+                Usuario usuarioBuscado = _usuarioRepository.Login(login.Email, util.ComputeSha256Hash(login.Senha));
 
                 // Caso não encontre nenhum usuário com o e-mail e senha informados
                 if (usuarioBuscado == null)

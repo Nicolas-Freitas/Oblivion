@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using APIEmpreGO.Models;
 using APIEmpreGO.Repositories;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APIEmpreGO.Controllers
 {
@@ -33,6 +34,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Colocar vaga especifica
+        [Authorize(Roles = "1")]
         [HttpPost]
         public HttpStatusCode colocarNoBanco(Vaga vaga)
         {
@@ -41,6 +43,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Deletar vaga especifica
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public HttpStatusCode deletar(long id)
         {
@@ -49,6 +52,7 @@ namespace APIEmpreGO.Controllers
         }
 
         //Atualizar vaga especifica
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public HttpStatusCode atualizarNoBanco(long id, Vaga vaga)
         {
