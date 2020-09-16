@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nsilv\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj": {}
+    "C:\\Users\\Usuario\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nsilv\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj": {
+    "C:\\Users\\Usuario\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nsilv\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj",
+        "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj",
         "projectName": "APIEmpreGO",
-        "projectPath": "C:\\Users\\nsilv\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj",
-        "packagesPath": "C:\\Users\\nsilv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nsilv\\Desktop\\Oblivion\\APIEmpreGO\\obj\\",
+        "projectPath": "C:\\Users\\Usuario\\Desktop\\Oblivion\\APIEmpreGO\\APIEmpreGO.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Usuario\\Desktop\\Oblivion\\APIEmpreGO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\nsilv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -98,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

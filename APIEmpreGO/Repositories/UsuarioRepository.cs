@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using APIEmpreGO.Interfaces;
 using APIEmpreGO.Models;
 using APIEmpreGO.Functions;
+using Microsoft.EntityFrameworkCore;
 
 namespace APIEmpreGO.Repositories
 {
@@ -61,6 +62,21 @@ namespace APIEmpreGO.Repositories
         {
             Usuario usuario = ctx.Usuario.FirstOrDefault(p => p.IdUsuario == id);
             return usuario;
+        }
+
+        public Usuario Login(string email, string senhaUsuario)
+        {
+            Usuario usuarioBuscado = ctx.Usuario
+                .Include(u => u.IdTipoUsuarioNavigation)
+                .FirstOrDefault(u => u.Email == email && u.SenhaUsuario == senhaUsuario);
+
+            if (usuarioBuscado != null)
+            {
+                return usuarioBuscado;
+            }
+
+            //Caso não encontre retorna nulo
+            return null;
         }
 
     }

@@ -21,5 +21,8 @@ namespace APIEmpreGO.Interfaces
         //PUT
         void atualizar(long id, Usuario usuario);
 
+        //Login
+        Usuario Login(string email, string usuarioSenha);
+
     }
 }
