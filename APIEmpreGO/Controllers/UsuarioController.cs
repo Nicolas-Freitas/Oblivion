@@ -39,9 +39,9 @@ namespace APIEmpreGO.Controllers
             usuarioRepository.cadastrar(usuario);
             return HttpStatusCode.OK;
         }
-
+       
         //Deletar usuario especifico
-        [Authorize(Roles = "1")]
+        [Authorize(Roles = "0")]
         [HttpDelete("{id}")]
         public HttpStatusCode deletar(long id)
         {

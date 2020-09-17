@@ -23,7 +23,7 @@ namespace APIEmpreGO.Models
         // Define o tipo do dado
         [DataType(DataType.Password)]
         // Define os requisitos do campo
-        [StringLength(50, MinimumLength = 8, ErrorMessage = "A senha deve ter entre 5 e 50 caracteres")]
+        [StringLength(50, MinimumLength = 8, ErrorMessage = "A senha deve ter entre 8 e 50 caracteres")]
         public string SenhaUsuario { get; set; }
 
         [Required(ErrorMessage = "O e-mail do usuário é obrigatório!")]

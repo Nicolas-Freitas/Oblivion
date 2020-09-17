@@ -11,13 +11,10 @@ using APIEmpreGO.Functions;
 
 namespace APIEmpreGO.Controllers
 {
-    //Define o formato da resposta como tipo JSON
-    [Produces("aplication/json")]
-
+    [ApiController]
     [Route("api/[controller]")]
 
     //Define como ApiControler 
-    [ApiController]
     public class LoginController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
@@ -39,6 +36,8 @@ namespace APIEmpreGO.Controllers
         [HttpPost]
         public IActionResult Post(LoginViewModel login)
         {
+            Console.WriteLine(login.Email);
+            Console.WriteLine(login.Senha);
             try
             {
                 // Busca o usuário pelo e-mail e senha

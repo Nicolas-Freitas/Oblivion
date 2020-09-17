@@ -56,7 +56,7 @@ namespace APIEmpreGO
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("emprego-chave-autenticacao")),
 
                         // Tempo de expiração do token
-                        ClockSkew = TimeSpan.FromMinutes(30),
+                        ClockSkew = TimeSpan.FromDays(2),
 
                         // Nome da issuer, de onde está vindo
                         ValidIssuer = "Emprego.WebApi",
@@ -79,7 +79,8 @@ namespace APIEmpreGO
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseAuthentication();
+
+
 
             app.UseHttpsRedirection();
 
@@ -91,6 +92,8 @@ namespace APIEmpreGO
             });
 
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

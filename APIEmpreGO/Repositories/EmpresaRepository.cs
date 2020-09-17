@@ -15,6 +15,7 @@ namespace APIEmpreGO.Repositories
         public void atualizar(long id, Empresa usuarioAtualizado)
         {
             Empresa usuarioBuscado = listarEspecifico(id);
+
             //if (usuarioAtualizado.IdTipoUsuario != null)
             //{
             //    usuarioBuscado.IdTipoUsuario = usuarioAtualizado.IdTipoUsuario;
